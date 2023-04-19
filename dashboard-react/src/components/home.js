@@ -1,231 +1,237 @@
+// import NavBarLoggedIn from "../Navbar/NavBarLoggedIn"
+import { Container, Row, Col, Card } from "react-bootstrap"
+// import LeftNavBarAdmin from "./LeftNavBarAdmin/LeftNavBarAdmin"
+import axios from "axios"
+import React, { useState } from "react"
+// import NavBarLoggedInAdmin from "./NavbarAdmin/NavBarLoggedInAdmin"
+// import "./AddUser.css"
+import mapImage from "./map.jpeg"
+import { color } from "@mui/system"
+import "./CampusViewPage.css"
+import { Link } from "react-router-dom"
 
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import {Card, Nav, Navbar} from "react-bootstrap";
-import Button from "react-bootstrap/Button";
+function Home() {
+  const buildings = [
+    {
+      id: 1,
+      name: "Campus",
+      cameras: [
+        {
+          id: 1,
+          name: "Building 1",
+          operationStatus: "Online",
+          healthStatus: "Good",
+          location: [50, 50],
+        },
+        {
+          id: 2,
+          name: "Building 2",
+          operationStatus: "Online",
+          healthStatus: "Excellent",
+          location: [30, 40],
+        },
+        {
+          id: 3,
+          name: "Building 3",
+          operationStatus: "Offline",
+          healthStatus: "Needs Maintenance",
+          location: [40, 30],
+        },
+        {
+          id: 4,
+          name: "Building 4",
+          operationStatus: "Online",
+          healthStatus: "Fair",
+          location: [60, 40],
+        },
+      ],
+    },
+  ]
 
-import {GiElectric} from 'react-icons/gi'
-import {IoWater} from 'react-icons/io5'
-import React, {useState} from "react";
-import axios from "axios";
+  const getOperationStatusColor = (status) => {
+    if (status === "Online") {
+      return "success"
+    } else if (status === "Offline") {
+      return "danger"
+    } else {
+      return "warning"
+    }
+  }
 
-
-const Home = ()=>{
-
-
-    const [data,setData] = useState({});
-
-    React.useEffect( () => {
-
-        const call = async ()=>{
-            const id = sessionStorage.getItem("userId");
-
-            //todo change userId
-            const homeData = await axios.post('http://localhost:4000/home',{
-
-                    userId:id
-
-            });
-            console.log(homeData);
-
-            setData({...homeData.data});
-
-        }
-
-        call();
-    }, []);
-
-
-    return <Container>
-        <Row style={{marginTop:'4%'}}>
-            <Col lg={4}>
-
-            </Col>
-            <Col lg={4} style={{textAlign:'center'}}>
-               <h4> Statistics  </h4>
-               {/* <GiElectric style={{fontSize:'25px'}}/> */}
-            </Col>
-            <Col lg={4}>
-
-            </Col>
-        </Row>
-
-            <div class="col-xl-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5>Alerts Received</h5>
+  return (
+    <>
+      {/* <NavBarLoggedInAdmin /> */}
+      <Row>
+        <Col lg={10} style={{ paddingLeft: 100, paddingRight: 20 }}>
+          <div class='main-body'>
+            <div class='page-wrapper'>
+              <div class='row'>
+                <div class='col-md-6 col-xl-4'>
+                  <div class='card daily-sales'>
+                    <div class='card-block'>
+                      <h6 class='mb-4'>Officers Registered</h6>
+                      <div class='row d-flex align-items-center'>
+                        <div class='col-9'>
+                          <h3 class='f-w-300 d-flex align-items-center m-b-0'>
+                            <i class='feather icon-arrow-up text-c-green f-30 m-r-10'></i>
+                            5
+                          </h3>
                         </div>
-                        <div class="card-block">
-                            <div id="morris-area-chart" style={{height:"300px"}}>
-                                
-                            </div>
-                        </div>
+                        {/* <div class='col-3 text-right'>
+                          <p class='m-b-0'>67%</p>
+                        </div> */}
+                      </div>
+                      <div
+                        className='progress m-t-30'
+                        style={{ height: "7px" }}
+                      >
+                        <div
+                          className='progress-bar progress-c-theme'
+                          role='progressbar'
+                          style={{ width: "50%" }}
+                          aria-valuenow='50'
+                          aria-valuemin='0'
+                          aria-valuemax='100'
+                        ></div>
+                      </div>
                     </div>
+                  </div>
                 </div>
 
-                <div class="col-xl-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5>Missions Created</h5>
+                <div class='col-md-8 col-xl-4'>
+                  <div class='card daily-sales'>
+                    <div class='card-block'>
+                      <h6 class='mb-4'>Maintenance Requests Raised</h6>
+                      <div class='row d-flex align-items-center'>
+                        <div class='col-9'>
+                          <h3 class='f-w-300 d-flex align-items-center m-b-0'>
+                            <i class='feather icon-arrow-up text-c-green f-30 m-r-10'></i>
+                            10
+                          </h3>
                         </div>
-                        <div class="card-block">
-                            <div id="morris-area-chart" style={{height:"300px"}}>
-                                
-                            </div>
-                        </div>
+
+                        {/* <div class='col-4 text-right'>
+                          <p class='m-b-0'>67%</p>
+                        </div> */}
+                      </div>
+                      <div
+                        className='progress m-t-30'
+                        style={{ height: "7px" }}
+                      >
+                        <div
+                          className='progress-bar progress-c-theme'
+                          role='progressbar'
+                          style={{ width: "50%" }}
+                          aria-valuenow='50'
+                          aria-valuemin='0'
+                          aria-valuemax='100'
+                        ></div>
+                      </div>
                     </div>
+                  </div>
                 </div>
 
-                <div class="col-xl-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5>Total cameras</h5>
+                <div class='col-md-6 col-xl-4'>
+                  <div class='card daily-sales'>
+                    <div class='card-block'>
+                      <h6 class='mb-4'>Pending Maintenance Requests</h6>
+                      <div class='row d-flex align-items-center'>
+                        <div class='col-9'>
+                          <h3 class='f-w-300 d-flex align-items-center m-b-0'>
+                            <i class='feather icon-arrow-up text-c-green f-30 m-r-10'></i>
+                            6
+                          </h3>
                         </div>
-                        <div class="card-block">
-                            <div id="morris-area-chart" style={{height:"300px"}}>
-                                
-                            </div>
-                        </div>
+
+                        {/* <div class='col-3 text-right'>
+                          <p class='m-b-0'>67%</p>
+                        </div> */}
+                      </div>
+                      <div
+                        className='progress m-t-30'
+                        style={{ height: "7px" }}
+                      >
+                        <div
+                          className='progress-bar progress-c-theme'
+                          role='progressbar'
+                          style={{ width: "50%" }}
+                          aria-valuenow='50'
+                          aria-valuemin='0'
+                          aria-valuemax='100'
+                        ></div>
+                      </div>
                     </div>
+                  </div>
                 </div>
+              </div>
 
-                <div class="col-xl-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5>Intruition rate</h5>
-                        </div>
-                        <div class="card-block">
-                            <div id="morris-area-chart" style={{height:"300px"}}>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            {/* <Row className='hover-overlay' style={{marginTop:'5%'}}>
-
-                <Col lg={4} >
-                    <Card style={{'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', color:"white",  backgroundColor: "#009ACD" , backgroundSize:"0"}}>
-                        <Card.Body>
-                            <Card.Title>Total Usage</Card.Title>
-
-                            <Card.Text>
-                                {Math.round((data.fanMetrics+data.lightMetrics+data.weatherSensorMetrics+data.cameraMetrics)/1000)} KWH
-                            </Card.Text>
-
-                        </Card.Body>
-                    </Card>
-
-                </Col>
-                <Col lg={4} >
-                    <Card style={{'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' , color:"white",  backgroundColor: "#009ACD" , backgroundSize:"0"}}>
-                        <Card.Body>
-                            <Card.Title>Last 24 hour Usage</Card.Title>
-
-                            <Card.Text>
-                                {Math.round(((data.fanMetrics+data.lightMetrics+data.weatherSensorMetrics+data.cameraMetrics)/1000) * 100) / 100} KWH
-                            </Card.Text>
-
-                        </Card.Body>
-                    </Card>
-
-                </Col>
-
-                <Col lg={4} >
-                    <Card style={{'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' , color:"white",  backgroundColor: "#009ACD" , backgroundSize:"0" }}>
-                        <Card.Body>
-                            <Card.Title>Last Updated</Card.Title>
-
-                            <Card.Text>
-                                {Date().toLocaleString().split('G')[0]}
-                                
-                            </Card.Text>
-
-                        </Card.Body>
-                    </Card>
-                </Col>
-
-            </Row> */}
-
-
-        <Row>
-
-        </Row>
-
-
-
-
-        {/* <Row style={{marginTop:'10%'}}>
-            <Col lg={4}>
-
-            </Col>
-            <Col lg={4} style={{textAlign:'center'}}>
-                <h4> Water Usage <IoWater style={{fontSize:'25px'}}/></h4>
-            </Col>
-            <Col lg={4}>
-
-            </Col>
-        </Row> */}
-
-
-        {/* <Row style={{marginTop:'5%'}}>
-
-            <Col lg={4} >
-                <Card style={{'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' , color:"white",  backgroundColor: "#009ACD" , backgroundSize:"0"}}>
-                    <Card.Body>
-                        <Card.Title>Total Usage</Card.Title>
-
-                        <Card.Text>
-                            {Math.round((data.waterMeterMetrics) * 100) / 100} Gallons
-                        </Card.Text>
-
-                    </Card.Body>
-                </Card>
-
-            </Col>
-            <Col lg={4} >
-                <Card style={{'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' , color:"white",  backgroundColor: "#009ACD" , backgroundSize:"0"}}>
-                    <Card.Body>
-                        <Card.Title>Last 24 hour Usage</Card.Title>
-
-                        <Card.Text>
-                            {Math.round((data.waterMeterMetrics) * 100) / 100} Gallons
-                        </Card.Text>
-
-                    </Card.Body>
-                </Card>
-
-            </Col>
-
-            <Col lg={4} >
-                <Card style={{'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' , color:"white",  backgroundColor: "#009ACD" , backgroundSize:"0" }}>
-                    <Card.Body>
-                        <Card.Title>Last Updated</Card.Title>
-
-                        <Card.Text>
-                            {Date().toLocaleString().split('G')[0]}
-                            
-                        </Card.Text>
-
-                    </Card.Body>
-                </Card>
-            </Col>
-
-        </Row> */}
-
-
-        <Row>
-
-        </Row>
-
-    </Container>
-
-
-
-
-
+              <Container style={{ marginLeft: "20px" }}>
+                <Row>
+                  <Col>
+                    <h1 className='text-center my-5'>Campus View</h1>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col sm={8}>
+                    <img
+                      src={mapImage}
+                      style={{ opacity: 0.6 }}
+                      alt='Map'
+                      className='map-image'
+                    />
+                    {buildings.map((building) => (
+                      <div key={building.id} className='building-markers'>
+                        {building.cameras.map((camera) => (
+                          <Link
+                            to='/floormap'
+                            key={camera.id}
+                            className={`camera-marker text-${getOperationStatusColor(
+                              camera.operationStatus
+                            )} bg-dark`}
+                            style={{
+                              left: `${camera.location[0]}%`,
+                              top: `${camera.location[1]}%`,
+                            }}
+                          >
+                            {camera.name}
+                          </Link>
+                        ))}
+                      </div>
+                    ))}
+                  </Col>
+                  <Col sm={4}>
+                    {buildings.map((building) => (
+                      <div key={building.id}>
+                        <Card className='building-card'>
+                          <Card.Body style={{ paddingTop: 10 }}>
+                            {building.cameras.map((camera) => (
+                              <Card.Text
+                                key={camera.id}
+                                className={`mb-2 text-${getOperationStatusColor(
+                                  camera.operationStatus
+                                )} bg-dark`}
+                                id={camera.id}
+                              >
+                                <strong>{camera.name}</strong>
+                                <br />
+                                Operation Status: {camera.operationStatus}
+                                <br />
+                                Health Status: {camera.healthStatus}
+                              </Card.Text>
+                            ))}
+                          </Card.Body>
+                        </Card>
+                      </div>
+                    ))}
+                  </Col>
+                </Row>
+              </Container>
+            </div>
+          </div>
+        </Col>
+      </Row>
+    </>
+  )
 }
 
-
-export default Home;
+export default Home
