@@ -23,7 +23,7 @@ import ManageUsers from "./components/admin/ManageUsers"
 import ViewServiceRequests from "./components/admin/ViewServiceRequests"
 import AdminDashboard from "./components/admin/AdminDashboard"
 import DataManagement from "./components/DataManagement/DataManagement"
-import FloorMap from "./components/admin/FloorMap"
+import FloorMap from "./components/FloorMap"
 
 function App() {
   return (
