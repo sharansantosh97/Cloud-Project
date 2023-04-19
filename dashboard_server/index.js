@@ -47,7 +47,7 @@ let SERVER_PORT = 4000;
 const app = express();
 
 const store = new MongoDBStore({
-    uri:process.env.MONGO ,
+    uri:'mongodb+srv://akankshterminator2001:Sharan1997@cluster0.ngoyhgh.mongodb.net/?retryWrites=true&w=majority' ,
     collection: 'sessions'
 });
 app.use(session({secret: 'my secret', resave: false, saveUninitialized: false, store: store}));
@@ -81,7 +81,7 @@ app.use('/', (req, res) => {
 
 sequelize.sync().then(res=>{
     console.log("sql synced");
-    mongoose.connect(process.env.MONGO)
+    mongoose.connect('mongodb+srv://akankshterminator2001:Sharan1997@cluster0.ngoyhgh.mongodb.net/?retryWrites=true&w=majority')
         .then(result => {
             if (result) {
 
