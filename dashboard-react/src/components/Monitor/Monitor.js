@@ -10,6 +10,7 @@ import Col from "react-bootstrap/Col"
 
 import LeftNavBar from "../LeftNavBar/LeftNavBar"
 import NavBarLoggedIn from "../Navbar/NavBarLoggedIn"
+import CameraTable from ".././CameraTable"
 
 import { Nav, Navbar } from "react-bootstrap"
 import "./MonitorAndTrack.css"
@@ -305,6 +306,7 @@ const Monitor = () => {
             <h3 style={{ textAlign: "center", marginTop: "5%" }}>
               Monitor and Tracking
             </h3>
+            <CameraTable></CameraTable>
           </Container>
         </Col>
       </Row>
