@@ -9,6 +9,7 @@ import Row from "react-bootstrap/Row";
 import DeviceManagement from "../DeviceManagement";
 import FanRow from "./FanRow";
 import Form from "react-bootstrap/Form";
+import DeviceTable from "../../DeviceTable";
 
 
 
@@ -137,7 +138,7 @@ const Fan=()=>{
 
 
     return <Container style={{marginTop:"5%"}}>
-
+{/* 
         <Row>
             <Col lg={10}>
 
@@ -168,140 +169,60 @@ const Fan=()=>{
 
 
 
-
-        <Modal  show={showAddModal} onHide={handleCloseAddModal}  size="xl">
-            <Form onSubmit={onAddClickHandler}>
-                <Modal.Header >
-                    <Modal.Title>View fan Information</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-
-                    <Row>
-                        <Col lg={4}>
-                            Device Id:  <Form.Control
-                            type="text"
-                            id="deviceId"
-                            required={true}
-
-
-                        />
-                        </Col>
-                        <Col lg={4}>
-                            Device Name : <Form.Control
-                            type="text"
-                            id="deviceName"
-                            required={true}
-                        />
-                        </Col>
-                        <Col lg={4}>
-                            Model : <Form.Control
-                            type="text"
-                            id="model"
-                            required={true}
-                        />
-                        </Col>
-
-                    </Row>
-                    <br/>
-                    <Row>
-                        <Col lg={4}>
-                            Installation Date : <Form.Control
-                            type="text"
-                            id="installationDate"
-                            required={true}
-
-                        />
-                        </Col>
-                        <Col lg={4}>
-                            Dimensions : <Form.Control
-                            type="text"
-                            id="dimensions"
-                            required={true}
-                        />
-                        </Col>
-                        <Col lg={4}>
-                            Location : <Form.Control
-                            type="text"
-                            id="location"
-                            required={true}
-                        />
-                        </Col>
-
-                    </Row>
-                    <br/>
-                    <Row>
-
-                        <Col lg={4}>
-                            Num Speeds :
-                            <Form.Control
-                                type="text"
-                                id="num_speeds"
-                                required={true}
-                            />
-                        </Col>
-                        <Col lg={4}>
-                            Max Speed : <Form.Control
-                            type="text"
-                            id="maxSpeed"
-                            required={true}
-                        />
-                        </Col>
-                        <Col lg={4}>
-                            Manufacturer : <Form.Control
-                            type="text"
-                            id="manufacturer"
-                            required={true}
-                        />
-                        </Col>
-
-                    </Row>
-                    <br/>
-                    <Row>
-
-                        <Col lg={4}>
-                            Deployment Date : <Form.Control
-                            type="text"
-                            id="deploymentDate"
-                            required={true}
-                        />
-                        </Col>
-                        <Col lg={4}>
-                            Power : <Form.Control
-                            type="text"
-                            id="power"
-                            required={true}
-                        />
-                        </Col>
-                        <Col lg={4}>
-
-
-                        </Col>
-
-                    </Row>
+        <Modal show={showAddModal} onHide={handleCloseAddModal} size="xl">
+  <Form onSubmit={onAddClickHandler}>
+    <Modal.Header>
+      <Modal.Title>Add Camera  Information</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+      <Row>
+       
+      </Row>
+      <br />
+      <Row>
+       
+        <Col lg={4}>
+          Camera Type :
+          <Form.Control type="text" id="cameraType" required={true} />
+        </Col>
+        <Col lg={4}>
+          Camera Name :
+          <Form.Control type="text" id="cameraName" required={true} />
+        </Col>
+      </Row>
+      <br />
+      <Row>
+        <Col lg={4}>
+          Resolution :
+          <Form.Control type="text" id="resolution" required={true} />
+        </Col>
+        <Col lg={4}>
+          Operation Status :
+          <Form.Control type="text" id="operationStatus" required={true} />
+        </Col>
+        <Col lg={4}>
+          Health Status :
+          <Form.Control type="text" id="healthStatus" required={true} />
+        </Col>
+      </Row>
+    </Modal.Body>
+    <Modal.Footer>
+      <Button variant="secondary" onClick={handleCloseAddModal}>
+        Close
+      </Button>
+      <Button variant="success" type={"submit"}>
+        Add
+      </Button>
+    </Modal.Footer>
+  </Form>
+</Modal>
 
 
 
 
+ */}
 
-
-                </Modal.Body>
-
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseAddModal}>
-                        Close
-                    </Button>
-                    <Button variant="success" type={"submit"} >
-                        Add
-                    </Button>
-                </Modal.Footer>
-            </Form>
-
-        </Modal>
-
-
-
-
-
+<DeviceTable></DeviceTable>
     </Container>
 }
 

@@ -24,6 +24,7 @@ import ViewServiceRequests from "./components/admin/ViewServiceRequests"
 import AdminDashboard from "./components/admin/AdminDashboard"
 import DataManagement from "./components/DataManagement/DataManagement"
 import FloorMap from "./components/FloorMap"
+import CameraVideo from "./components/CameraVideo"
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
           </Route>
 
           <Route path='/home' element={<Dashboard />}>
+            {" "}
+          </Route>
+          <Route path='/cameravideo' element={<CameraVideo />}>
             {" "}
           </Route>
           <Route

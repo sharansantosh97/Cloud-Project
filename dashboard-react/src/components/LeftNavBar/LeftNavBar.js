@@ -60,7 +60,7 @@ const LeftMenu = () => {
                   path === "deviceManagement" ? "nav-item active" : "nav-item"
                 }
               >
-                <NavLink href='/home'>
+                <NavLink href='/deviceManagement'>
                   <span class='pcoded-micon'>
                     <i class='feather icon-camera'></i>
                   </span>
@@ -84,7 +84,7 @@ const LeftMenu = () => {
                   path === "controlConfigure" ? "nav-item active" : "nav-item"
                 }
               >
-                <NavLink href='/home'>
+                <NavLink href='/controlConfigure'>
                   <span class='pcoded-micon'>
                     <i class='feather icon-server'></i>
                   </span>

@@ -1,18 +1,17 @@
-import NavBarLoggedIn from "./Navbar/NavBarLoggedIn"
-import { Container, Row, Col, Card } from "react-bootstrap"
-import LeftNavBarAdmin from "./admin/LeftNavBarAdmin/LeftNavBarAdmin"
-import axios from "axios"
-import React, { useState } from "react"
-import NavBarLoggedInAdmin from "./admin/NavbarAdmin/NavBarLoggedInAdmin"
-import LeftNavBar from "./LeftNavBar/LeftNavBar"
+import NavBarLoggedIn from "./Navbar/NavBarLoggedIn";
+import { Container, Row, Col, Card } from "react-bootstrap";
+import LeftNavBarAdmin from "./admin/LeftNavBarAdmin/LeftNavBarAdmin";
+import axios from "axios";
+import React, { useState } from "react";
+import NavBarLoggedInAdmin from "./admin/NavbarAdmin/NavBarLoggedInAdmin";
+import LeftNavBar from "./LeftNavBar/LeftNavBar";
 // import "./AddUser.css"
-import floorImage from "./floor.jpeg"
-import { color } from "@mui/system"
-import "./CampusViewPage.css"
-import { Link } from "react-router-dom"
-import CameraTable from "./CameraTable"
+import floorImage from "./floor.jpeg";
+import { color } from "@mui/system";
+import "./CampusViewPage.css";
+import { Link } from "react-router-dom";
 
-function FloorMap() {
+function CameraVideo() {
   const buildings = [
     {
       id: 1,
@@ -76,64 +75,40 @@ function FloorMap() {
         },
       ],
     },
-  ]
+  ];
 
   const getOperationStatusColor = (status) => {
     if (status === "Online") {
-      return "success"
+      return "success";
     } else if (status === "Offline") {
-      return "danger"
+      return "danger";
     } else {
-      return "warning"
+      return "warning";
     }
-  }
+  };
+  const videoUrl = "https://www.youtube.com/watch?v=USYtKvebTfM&ab_channel=KSAT12"; // Replace with your own video URL
 
   return (
     <>
       {/* <NavBarLoggedInAdmin /> */}
       <Row>
         <Col lg={2}>
-        <LeftNavBar/> 
+          <LeftNavBar />
         </Col>
         <Col lg={10} style={{ paddingLeft: 80, paddingRight: 80 }}>
-          <div class='main-body'>
-            <div class='page-wrapper'>
+          <div class="main-body">
+            <div class="page-wrapper">
               <Container style={{ marginLeft: "20px" }}>
                 <Row>
                   <Col>
-                    <h1 className='text-center my-5'>Floor View</h1>
+                    <h1 className="text-center my-5">Camera Video</h1>
                   </Col>
                 </Row>
                 <Row>
                   <Col sm={8}>
-                    <img
-                      src={floorImage}
-                      style={{ opacity: 0.6 }}
-                      alt='Map'
-                      className='map-image'
-                    />
-                    {buildings.map((building) => (
-                      <div key={building.id} className='building-markers'>
-                        {building.cameras.map((camera) => (
-                          <Link
-                            to='/cameravideo'
-                            key={camera.id}
-                            className={`camera-marker text-${getOperationStatusColor(
-                              camera.operationStatus
-                            )} bg-dark`}
-                            style={{
-                              left: `${camera.location[0]}%`,
-                              top: `${camera.location[1]}%`,
-                            }}
-                          >
-                            {camera.name}
-                          </Link>
-                        ))}
-                      </div>
-                    ))}
                     
+                    <iframe width="1033" height="581" src="https://www.youtube.com/embed/USYtKvebTfM" title="CCTV show tornado winds damaging school in Amory, Mississippi" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                   </Col>
-                  
                   {/* <Col sm={4}>
                     {buildings.map((building) => (
                       <div key={building.id}>
@@ -160,15 +135,13 @@ function FloorMap() {
                     ))}
                   </Col> */}
                 </Row>
-                <CameraTable></CameraTable>
               </Container>
             </div>
           </div>
         </Col>
-       
       </Row>
     </>
-  )
+  );
 }
 
-export default FloorMap
+export default CameraVideo;
