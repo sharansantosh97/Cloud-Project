@@ -37,7 +37,7 @@ function ServiceRequest() {
 
     }
     const submit = async(device, description, location, priority)=>{
-        const response = await axios.post("http://localhost:5000/service",{
+        const response = await axios.post("http://localhost:4000/service",{
             device:"camera",
             userId:sessionStorage.getItem("userId"),
             description:description,
