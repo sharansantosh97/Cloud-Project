@@ -8,7 +8,7 @@ function DeviceTable() {
     buildingId: '',
     cameraType: '',
     resolution: '',
-    location: [],
+    location: '',
     operationStatus: '',
     healthStatus: ''
   });
@@ -137,7 +137,7 @@ function DeviceTable() {
           <td>{record.buildingId}</td>
           <td>{record.cameraType}</td>
           <td>{record.resolution}</td>
-          <td>{record.location.join(", ")}</td>
+          <td>{record.location}</td>
           <td>{record.operationStatus}</td>
           <td>{record.healthStatus}</td>
         </tr>
