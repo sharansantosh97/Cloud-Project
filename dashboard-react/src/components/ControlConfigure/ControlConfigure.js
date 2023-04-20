@@ -10,6 +10,7 @@ import fan from "../DeviceManagement/Fan/Fan";
 import NavBarLoggedIn from "../Navbar/NavBarLoggedIn";
 import LeftNavBar from "../LeftNavBar/LeftNavBar";
 import Home from "../home";
+import ControlTable from "./ControlTable";
 
 
 const ControlConfigure = ()=> {
@@ -167,7 +168,7 @@ const ControlConfigure = ()=> {
         <Row>
             <Col lg={2}> <LeftNavBar/> </Col>
             <Col lg={10}>
-                <Navbar expand="lg" variant="dark" bg="dark" fluid="true"  style={{color:"white",marginTop:'2%'}}>
+                {/* <Navbar expand="lg" variant="dark" bg="dark" fluid="true"  style={{color:"white",marginTop:'2%'}}>
 
                     <Nav>
                         <Nav.Link onClick={clickHandler} style={{marginLeft:"10%"}}>Fan </Nav.Link>
@@ -178,28 +179,11 @@ const ControlConfigure = ()=> {
                         <Nav.Link onClick={clickHandler} style={{marginLeft:'20%'}}>Weather_Sensor</Nav.Link>
                     </Nav>
 
-                </Navbar>
+                </Navbar> */}
 
-                <h2 style={{textAlign:"center", marginTop:"5%"}}> {device} Data</h2>
                 <Container style={{marginTop:"5%"}}>
 
-                    <Table bordered>
-                        <thead>
-                        <tr>
-                            <th>Device Id</th>
-                            <th>Device Name</th>
-                            <th>Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        {data.map(d=>
-                            <ControlConfigureRow data={d} key={d.data.id} updateData={onUpdateDataHandler}/>
-
-                        )}
-
-                        </tbody>
-                    </Table>
+                   <ControlTable></ControlTable>
                 </Container>
 
             </Col>
