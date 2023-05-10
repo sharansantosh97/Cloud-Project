@@ -28,7 +28,7 @@ exports.login = async (req,res,next)=>{
     const token = jwt.sign({ email }, secret, { expiresIn: '1h' });
   
     // Return user details and token in response
-    res.status(200).json({ status: 200, email, token , isAdmin: user.isAdmin});
+    res.status(200).json({ status: 200, email, token , isAdmin: user.isAdmin, name: user.name || user.firstName});
   
 }
 
@@ -61,9 +61,8 @@ exports.signUp = async (req, res, next) => {
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // Create new user
-    const user = { email, password: hashedPassword, firstName: req.firstName, lastName: req.lastName, status: req.status, campusName: req.campusName, phoneNumber: req.phoneNumber };
     await users.create({
-        name,
+        firstName: name,
         email,
         password: hashedPassword,
         isAdmin: isAdmin || false
@@ -73,7 +72,7 @@ exports.signUp = async (req, res, next) => {
     const token = jwt.sign({ email }, secret, { expiresIn: '1h' });
 
     // Return user details and token in response
-    return res.status(201).json({ status: 200, email, token, isAdmin });
+    return res.status(201).json({ status: 200, email, name,  token, isAdmin });
     } catch(error) {
         console.log("error in signup :", error);
     }
