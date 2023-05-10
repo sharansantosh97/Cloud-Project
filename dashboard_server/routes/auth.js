@@ -6,7 +6,9 @@ const auth = require('../controllers/auth');
 
 router.post('/addUser',auth.login);
 router.post('/deleterUser',auth.deleteUser);
-router.post('/login', auth.postLogin);
+// router.post('/login', auth.postLogin); // previous route
+router.post('/login', auth.login);
+router.post('/signup', auth.signUp);
 router.post('/logout',auth.logout);
 
 

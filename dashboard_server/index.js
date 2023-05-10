@@ -17,7 +17,7 @@ const flash = require('connect-flash');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 
-const user = require('./model/user');
+const user = require('./model/user.js');
 const camera = require('./model/camera');
 const ele = require('./model/electricity_meter');
 const fan = require('./model/fan');
