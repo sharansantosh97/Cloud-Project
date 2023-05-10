@@ -69,12 +69,12 @@ function Home() {
                 <div class='col-md-6 col-xl-4'>
                   <div class='card daily-sales'>
                     <div class='card-block'>
-                      <h6 class='mb-4'>Officers Registered</h6>
+                      <h6 class='mb-4'>Number of Cameras</h6>
                       <div class='row d-flex align-items-center'>
                         <div class='col-9'>
                           <h3 class='f-w-300 d-flex align-items-center m-b-0'>
                             <i class='feather icon-arrow-up text-c-green f-30 m-r-10'></i>
-                            5
+                            25
                           </h3>
                         </div>
                         {/* <div class='col-3 text-right'>

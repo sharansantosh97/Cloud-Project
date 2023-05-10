@@ -64,7 +64,7 @@ const LeftMenu = () => {
                   <span class='pcoded-micon'>
                     <i class='feather icon-camera'></i>
                   </span>
-                  <span class='pcoded-mtext'>Device Management</span>
+                  <span class='pcoded-mtext'>Camera Management</span>
                 </NavLink>
               </li>
               <li
@@ -125,6 +125,21 @@ const LeftMenu = () => {
                   </span>
                   <span class='pcoded-mtext'>
                     Data Management and Retreival
+                  </span>
+                </NavLink>
+              </li>
+              <li
+                data-username='Sample Page'
+                class={
+                  path === "alert" ? "nav-item active" : "nav-item"
+                }
+              >
+                <NavLink href='/alert'>
+                  <span class='pcoded-micon'>
+                    <i class='feather icon-alert-circle'></i>
+                  </span>
+                  <span class='pcoded-mtext'>
+                    Alert Dashboard
                   </span>
                 </NavLink>
               </li>

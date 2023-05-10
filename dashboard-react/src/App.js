@@ -18,12 +18,14 @@ import Invoice from "./components/Billing/Invoice"
 import React from "react"
 import Monitor from "./components/Monitor/Monitor"
 import ServiceRequest from "./components/serviceRequest/ServiceRequest"
+import Alert from "./components/alerts/alert"
 import AddUser from "./components/admin/AddUser"
 import ViewAllUsers from "./components/admin/ViewAllUsers"
 import ManageUsers from "./components/admin/ManageUsers"
 import ViewServiceRequests from "./components/admin/ViewServiceRequests"
 import AdminDashboard from "./components/admin/AdminDashboard"
 import DataManagement from "./components/DataManagement/DataManagement"
+import SurveillanceDashboard from "./components/stats/statsDashboard"
 import FloorMap from "./components/FloorMap"
 import CameraVideo from "./components/CameraVideo"
 
@@ -82,6 +84,8 @@ function App() {
           <Route path='/monitor' element={<Monitor />}></Route>
 
           <Route path='/service' element={<ServiceRequest />}></Route>
+          <Route path='/stats' element={<SurveillanceDashboard />}></Route>
+          <Route path='/alert' element={<Alert />}></Route>
           <Route path='/billing' element={<Billing />}></Route>
 
           <Route path='/invoice' element={<Invoice />}></Route>
