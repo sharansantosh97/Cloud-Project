@@ -10,10 +10,10 @@ const user = seq.define('user',{
         allowNull:false,
         primaryKey:true
     },
-    firstName:{
-            type:Sequelize.STRING,
-            allowNull:true
-        },
+    // firstName:{
+    //         type:Sequelize.STRING,
+    //         allowNull:true
+    //     },
     // lastName:{
     //         type:Sequelize.STRING,
     //         allowNull:true
