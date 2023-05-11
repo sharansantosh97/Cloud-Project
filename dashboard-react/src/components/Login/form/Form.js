@@ -123,7 +123,7 @@ const [message, setMessage] = useState(errorMessage);
                     <button class="btn btn-primary shadow-2 mb-4" >Login</button>
                     </Form>
                     <p class="mb-2 text-muted">Forgot password? <a href="#">Reset</a></p>
-                    <p class="mb-0 text-muted">Don’t have an account? <a href="/signup">Signup</a></p>
+                    <p class="mb-0 text-muted">Don’t have an account? <a href="#">Signup</a></p>
                 </div>
                 {displayError(error,message)}
             </div>

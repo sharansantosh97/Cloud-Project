@@ -3,23 +3,24 @@ const Sequelize = require('sequelize');
 
 const seq = require('../util/database')
 
-const user = seq.define('user',{
+
+
+const user =seq.define('user',{
     id:{
         type:Sequelize.INTEGER,
         autoIncrement:true,
         allowNull:false,
         primaryKey:true
     },
-    // firstName:{
-    //         type:Sequelize.STRING,
-    //         allowNull:true
-    //     },
-    // lastName:{
-    //         type:Sequelize.STRING,
-    //         allowNull:true
-    // }
-    // ,
-    password:{
+    firstName:{
+            type:Sequelize.STRING,
+            allowNull:false
+        },
+    lastName:{
+            type:Sequelize.STRING,
+            allowNull:false
+    }
+    ,password:{
         type:Sequelize.STRING,
         allowNull:false
     },
@@ -33,18 +34,20 @@ const user = seq.define('user',{
     },
     status:{
         type:Sequelize.STRING,
-        allowNull:true
+        allowNull:false
     },
     campusName:{
         type:Sequelize.STRING,
-        allowNull:true
+        allowNull:false
     },
     phoneNumber:{
         type:Sequelize.STRING,
-        allowNull:true
+        allowNull:false
     }
 
 
 });
 
 module.exports = user;
+
+

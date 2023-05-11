@@ -1,5 +1,4 @@
 import Login from "./components/Login/Login/login"
-import SignUp from "./components/SignUp/SignUp/signup"
 import Home from "./components/home"
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom"
 import Dashboard from "./components/Dashboard"
@@ -35,10 +34,6 @@ function App() {
       <Router>
         <Routes>
           <Route exact path='/' element={<Login />}>
-            {" "}
-          </Route>
-
-          <Route exact path='/signup' element={<SignUp />}>
             {" "}
           </Route>
 

@@ -1,35 +1,19 @@
 
-const users = require('../model/user');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const secret = "vkjbfgIVBSivubdfvh4r38y4r3834Y34871@#y$*&"
+const User = require('../model/User');
+
 //code to add user statically
 exports.login = async (req,res,next)=>{
-    const { email, password } = req.body;
-
-    // Validate request body
-    if (!email || !password) {
-      return res.status(400).json({ message: 'Email and password are required' });
-    }
-  
-    // Find user by email
-    const user = await users.findOne({ where: { email } });
-    if (!user) {
-      return res.status(401).json({ message: 'Invalid email or password' });
-    }
-  
-    // Compare password
-    const passwordMatch = await bcrypt.compare(password, user.password);
-    if (!passwordMatch) {
-      return res.status(401).json({ message: 'Invalid email or password' });
-    }
-  
-    // Generate JWT
-    const token = jwt.sign({ email }, secret, { expiresIn: '1h' });
-  
-    // Return user details and token in response
-    res.status(200).json({ status: 200, email, token , isAdmin: user.isAdmin});
-  
+    await User.create({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        password:req.body.password,
+        email:req.body.email,
+        isAdmin:req.body.isAdmin,
+        status:"Onboarding",
+        campusName:req.body.campusName,
+        phoneNumber:req.body.phoneNumber
+    });
+    res.json({'status':200});
 }
 
 exports.deleteUser = async (req,res,next)=> {
@@ -39,46 +23,6 @@ exports.deleteUser = async (req,res,next)=> {
     res.json({'status':200});
 }
 
-exports.signUp = async (req, res, next) => {
-    try {
-    const { email, password, name, isAdmin } = req.body;
-
-    // Validate request body
-    if (!email || !password) {
-        return res.status(400).json({ message: 'Email and password are required' });
-    }
-    console.log("SIGNUP@@@@", email, password)
-
-    // Check if user already exists
-    const userExists = await users.findOne({ where: { email } });
-    console.log("@@@# userExists", userExists)
-    if (userExists) {
-        return res.status(409).json({ message: 'User already exists' });
-    }
-
-    // Hash password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
-
-    // Create new user
-    const user = { email, password: hashedPassword, firstName: req.firstName, lastName: req.lastName, status: req.status, campusName: req.campusName, phoneNumber: req.phoneNumber };
-    await users.create({
-        name,
-        email,
-        password: hashedPassword,
-        isAdmin: isAdmin || false
-      });
-
-    // Generate JWT
-    const token = jwt.sign({ email }, secret, { expiresIn: '1h' });
-
-    // Return user details and token in response
-    return res.status(201).json({ status: 200, email, token, isAdmin });
-    } catch(error) {
-        console.log("error in signup :", error);
-    }
-
-}
 
 //  insert into `users` (`id`, `firstName`,`lastName`,`password`,`email`,`isAdmin`) values (2,'Admin','A','Admin@123','admin@sjsu.edu,1);
 
@@ -113,7 +57,7 @@ exports.postLogin =async (req, res, next) => {
 
 
 exports.getAllUsers = async (req,res,next)=>{
-    const records =  await users.findAll({
+    const records =  await User.findAll({
         where: { isAdmin: false }
     });
 
