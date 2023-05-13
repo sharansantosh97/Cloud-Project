@@ -120,6 +120,17 @@ const [message, setMessage] = useState(errorMessage);
                             <label for="checkbox-fill-a1" class="cr"> Save Details</label>
                         </div>
                     </div>
+                  
+                    <div class="form-group text-left">
+                        <div class="checkbox checkbox-fill d-inline">
+                            <select>
+                                <option>Campus Admin</option>
+                                <option>Campus Security Officer</option>
+                            </select>
+                            {/* <label for="checkbox-fill-a1" class="cr"> Save Details</label> */}
+                        </div>
+                    </div>
+                    <br/>  <br/>
                     <button class="btn btn-primary shadow-2 mb-4" >Login</button>
                     </Form>
                     <p class="mb-2 text-muted">Forgot password? <a href="#">Reset</a></p>

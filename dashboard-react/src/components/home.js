@@ -187,10 +187,11 @@ function Home() {
                             key={camera.id}
                             className={`camera-marker text-${getOperationStatusColor(
                               camera.operationStatus
-                            )} bg-dark`}
+                            )} `}
                             style={{
                               left: `${camera.location[0]}%`,
                               top: `${camera.location[1]}%`,
+                              backgroundColor: "#eee"
                             }}
                           >
                             {camera.name}
@@ -203,13 +204,14 @@ function Home() {
                     {buildings.map((building) => (
                       <div key={building.id}>
                         <Card className='building-card'>
-                          <Card.Body style={{ paddingTop: 10 }}>
+                          <Card.Body style={{ paddingTop: 10, backgroundColor: '#eee' }}>
                             {building.cameras.map((camera) => (
                               <Card.Text
+                              style={{fontSize: "16px"}}
                                 key={camera.id}
                                 className={`mb-2 text-${getOperationStatusColor(
                                   camera.operationStatus
-                                )} bg-dark`}
+                                )}`}
                                 id={camera.id}
                               >
                                 <strong>{camera.name}</strong>
